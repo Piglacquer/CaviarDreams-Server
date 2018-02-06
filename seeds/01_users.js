@@ -3,9 +3,12 @@ exports.seed = function(knex, Promise) {
 		.del()
 		.then(function() {
 			return knex('users').insert([
-				{ id: 1, name: 'Stewart Little' },
-				{ id: 2, name: 'John Bon' },
-				{ id: 3, name: 'Larisha Toodles' }
+				{ userId: 1, name: 'Stewart Little' },
+				{ userId: 2, name: 'John Bon' },
+				{ userId: 3, name: 'Larisha Toodles' }
 			])
 		})
+	// .then(() => {
+	// 	return knex.raw('ALTER SEQUENCE users_userId_seq RESTART WITH 4;')
+	// })
 }

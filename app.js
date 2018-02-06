@@ -7,13 +7,48 @@ app.use(bodyParser.json())
 
 app.get('/users', (request, response) => {
 	queries
-		.list()
+		.listUsers()
 		.then(users => {
 			response.json({ users })
 		})
 		.catch(console.error)
 })
 
+app.get('/stocks', (request, response) => {
+	queries
+		.listStocks()
+		.then(stocks => {
+			response.json({ stocks })
+		})
+		.catch(console.error)
+})
+
+app.get('/stocks/:id', (request, response) => {
+	queries
+		.listStocksByUser(request.params.id)
+		.then(stocks => {
+			response.json({ stocks })
+		})
+		.catch(console.error)
+})
+
+app.post('/users', (request, response) => {
+	queries
+		.createUser(request.body)
+		.then(user => {
+			response.status(201).json({ user })
+		})
+		.catch(console.error)
+})
+
+app.post('/stocks', (request, response) => {
+	queries
+		.createStock(request.body)
+		.then(stock => {
+			response.status(201).json({ stock })
+		})
+		.catch(console.error)
+})
 // app.get('/coffees/:id', (request, response) => {
 // 	queries
 // 		.read(request.params.id)
@@ -50,8 +85,8 @@ app.get('/users', (request, response) => {
 // 		.catch(console.error)
 // })
 //
-// app.use((request, response) => {
-// 	response.send(404)
-// })
+app.use((request, response) => {
+	response.send(404)
+})
 
 module.exports = app

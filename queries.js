@@ -1,31 +1,44 @@
 const database = require('./database-connection')
+const knex = require('knex')({
+	client: 'pg',
+	connection: 'postgres:///tower'
+})
 
 module.exports = {
-	list() {
-		return database('tower')
+	listUsers() {
+		return database('users')
 	},
-	read(id) {
-		return database('tower')
-			.where('id', id)
-			.returning()
-			.first()
+	listStocks() {
+		return database('stocks')
 	},
-	create(tower) {
-		return database('tower')
-			.insert(tower)
+	listStocksByUser(userId) {
+		return database('stocks')
+			.select('*')
+			.where('userId', userId)
+			.returning('*')
+	},
+	createUser(user) {
+		return database('users')
+			.insert(user)
 			.returning('*')
 			.then(record => record[0])
 	},
-	update(id, tower) {
-		return database('tower')
-			.where('id', id)
-			.update(tower)
+	createStock(stock) {
+		return database('stocks')
+			.insert(stock)
 			.returning('*')
 			.then(record => record[0])
-	},
-	delete(id) {
-		return database('tower')
-			.where('id', id)
-			.del()
 	}
+	// update(id, tower) {
+	// 	return database('tower')
+	// 		.where('id', id)
+	// 		.update(tower)
+	// 		.returning('*')
+	// 		.then(record => record[0])
+	// },
+	// delete(id) {
+	// 	return database('tower')
+	// 		.where('id', id)
+	// 		.del()
+	// }
 }

@@ -1,40 +1,14 @@
+require('dotenv').config()
+
 module.exports = {
 	development: {
 		client: 'pg',
-		connection: {
-			filename: 'postgres:///tower'
-		}
+		connection: 'postgres:///tower'
 	},
-
-	staging: {
-		client: 'postgresql',
-		connection: {
-			database: 'my_db',
-			user: 'username',
-			password: 'password'
-		},
-		pool: {
-			min: 2,
-			max: 10
-		},
-		migrations: {
-			tableName: 'knex_migrations'
-		}
-	},
-
 	production: {
-		client: 'postgresql',
-		connection: {
-			database: 'my_db',
-			user: 'username',
-			password: 'password'
-		},
-		pool: {
-			min: 2,
-			max: 10
-		},
-		migrations: {
-			tableName: 'knex_migrations'
-		}
+		client: 'pg',
+		// connection:
+		// 	'postgres://qtcbijksljenim:c82606ba29f7955e45761d6a53f85596ffdffa2cd6db7757d0fa1be9be164b6a@ec2-54-197-253-122.compute-1.amazonaws.com:5432/dakf5q2tervvjh'
+		connection: process.env.DATABASE_URL
 	}
 }
