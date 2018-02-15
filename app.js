@@ -52,7 +52,7 @@ app.post('/stocks', (request, response) => {
 		.catch(console.error)
 })
 
-app.delete('stocks/:id/:tickerSymbol', (request, response) => {
+app.delete('stocks/:id/', (request, response) => {
 	queries
 		.deleteStock(request.params.tickerSymbol, request.params.id)
 		.then(() => response.sendStatus(200))

@@ -29,11 +29,10 @@ module.exports = {
 			.returning('*')
 			.then(record => record[0])
 	},
-	deleteStock(ticker, id) {
+	deleteStock(userId) {
 		return database('stocks')
 			.where({
-				tickerSymbol: ticker,
-				userId: id
+				userId: userId
 			})
 			.del()
 	},
