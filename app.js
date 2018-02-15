@@ -54,7 +54,7 @@ app.post('/stocks', (request, response) => {
 
 app.delete('stocks/:id', (request, response) => {
 	queries
-		.deleteStock(request.params.id)
+		.deleteStock()
 		.then(() => {
 			response.sendStatus(200)
 		})
