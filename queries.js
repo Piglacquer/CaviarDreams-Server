@@ -28,6 +28,24 @@ module.exports = {
 			.insert(stock)
 			.returning('*')
 			.then(record => record[0])
+	},
+	deleteStock(tickerSymbol, userId) {
+		return database('stocks')
+			.where({
+				tickerSymbol: tickerSymbol,
+				userId: userId
+			})
+			.del()
+	},
+	deleteUser(userId) {
+		return database('users')
+			.where('userId', userId)
+			.del()
+	},
+	deleteUserFromStocks(userId) {
+		return database('stocks')
+			.where('userId', userId)
+			.del()
 	}
 	// update(id, tower) {
 	// 	return database('tower')

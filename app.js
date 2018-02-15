@@ -2,13 +2,10 @@ const express = require('express')
 const app = express()
 const queries = require('./queries')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 app.use(bodyParser.json())
-app.use(function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*')
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-	next()
-})
+app.use(cors())
 
 app.get('/users', (request, response) => {
 	queries
@@ -53,6 +50,10 @@ app.post('/stocks', (request, response) => {
 			response.status(201).json({ stock })
 		})
 		.catch(console.error)
+})
+
+app.delete('stocks/:id/:tickerSymbol', (request, response) => {
+	queries.deleteStock(request.params.tickerSymbol).then(() => response.sendStatus(200))
 })
 // app.get('/coffees/:id', (request, response) => {
 // 	queries
