@@ -52,9 +52,9 @@ app.post('/stocks', (request, response) => {
 		.catch(console.error)
 })
 
-app.delete('/stocks', (request, response) => {
+app.delete('/stocks/:id', (request, response) => {
 	queries
-		.deleteStock()
+		.deleteStock(request.params.id)
 		.then(() => {
 			response.sendStatus(200)
 		})
