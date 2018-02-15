@@ -53,9 +53,12 @@ app.post('/stocks', (request, response) => {
 })
 
 app.delete('stocks/:id', (request, response) => {
-	queries.deleteStock(request.params.id).then(() => {
-		response.sendStatus(200)
-	})
+	queries
+		.deleteStock(request.params.id)
+		.then(() => {
+			response.sendStatus(200)
+		})
+		.catch(console.error)
 })
 // app.get('/coffees/:id', (request, response) => {
 // 	queries

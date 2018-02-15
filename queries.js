@@ -33,17 +33,18 @@ module.exports = {
 		return database('stocks')
 			.where('userId', id)
 			.del()
-	},
-	deleteUser(userId) {
-		return database('users')
-			.where('userId', userId)
-			.del()
-	},
-	deleteUserFromStocks(userId) {
-		return database('stocks')
-			.where('userId', userId)
-			.del()
 	}
+	// },
+	// deleteUser(userId) {
+	// 	return database('users')
+	// 		.where('userId', userId)
+	// 		.del()
+	// },
+	// deleteUserFromStocks(userId) {
+	// 	return database('stocks')
+	// 		.where('userId', userId)
+	// 		.del()
+	// }
 	// update(id, tower) {
 	// 	return database('tower')
 	// 		.where('id', id)
