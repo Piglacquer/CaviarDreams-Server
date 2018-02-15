@@ -31,9 +31,7 @@ module.exports = {
 	},
 	deleteStock(id) {
 		return database('stocks')
-			.where({
-				userId: id
-			})
+			.where('userId', id)
 			.del()
 	},
 	deleteUser(userId) {
