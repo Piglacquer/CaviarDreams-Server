@@ -45,7 +45,7 @@ app.post('/users', (request, response) => {
 
 app.post('/stocks', (request, response) => {
 	queries
-		.createStock(request.body)
+		.createStock(request.body.ticker)
 		.then(stock => {
 			response.status(201).json({ stock })
 		})
