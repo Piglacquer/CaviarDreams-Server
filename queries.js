@@ -30,6 +30,7 @@ module.exports = {
 			.then(record => record[0])
 	},
 	deleteStock(ticker) {
+		console.log(ticker)
 		return database('stocks')
 			.where('tickerSymbol', ticker)
 			.del()
