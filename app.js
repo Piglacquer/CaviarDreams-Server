@@ -45,7 +45,7 @@ app.post('/users', (request, response) => {
 
 app.post('/stocks', (request, response) => {
 	queries
-		.createStock(request.body.ticker)
+		.createStock(request.body)
 		.then(stock => {
 			response.status(201).json({ stock })
 		})
@@ -54,7 +54,7 @@ app.post('/stocks', (request, response) => {
 
 app.delete('/stocks', (request, response) => {
 	queries
-		.deleteStock(request.body)
+		.deleteStock(request.body.ticker)
 		.then(() => {
 			response.sendStatus(200)
 		})
