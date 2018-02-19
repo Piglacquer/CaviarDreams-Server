@@ -36,13 +36,12 @@ module.exports = {
 				userId: id
 			})
 			.del()
+	},
+	deleteUser(id) {
+		return database('users')
+			.where('userId', id)
+			.del()
 	}
-	// },
-	// deleteUser(userId) {
-	// 	return database('users')
-	// 		.where('userId', userId)
-	// 		.del()
-	// },
 	// deleteUserFromStocks(userId) {
 	// 	return database('stocks')
 	// 		.where('userId', userId)

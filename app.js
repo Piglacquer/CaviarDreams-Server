@@ -60,6 +60,15 @@ app.delete('/stocks/:id', (request, response) => {
 		})
 		.catch(console.error)
 })
+
+app.delete('/users', (request, response) => {
+	queries
+		.deleteUser(request.body.userId)
+		.then(() => {
+			response.sendStatus(200)
+		})
+		.catch(console.error)
+})
 // app.get('/coffees/:id', (request, response) => {
 // 	queries
 // 		.read(request.params.id)
