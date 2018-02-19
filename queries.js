@@ -41,12 +41,12 @@ module.exports = {
 		return database('users')
 			.where('userId', id)
 			.del()
+	},
+	deleteUserFromStocks(userId) {
+		return database('stocks')
+			.where('userId', userId)
+			.del()
 	}
-	// deleteUserFromStocks(userId) {
-	// 	return database('stocks')
-	// 		.where('userId', userId)
-	// 		.del()
-	// }
 	// update(id, tower) {
 	// 	return database('tower')
 	// 		.where('id', id)
