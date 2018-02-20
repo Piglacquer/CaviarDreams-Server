@@ -46,7 +46,22 @@ module.exports = {
 		return database('stocks')
 			.where('userId', userId)
 			.del()
+	},
+	updateUser(id, name) {
+		return database('users')
+			.where('userId', userId)
+			.update(name)
+			.returning('*')
+			.then(record => record[0])
 	}
+	// updateStock(id, ticker){
+	// 	return database('stocks')
+	// 	.where({
+	// 		userId: id,
+	// 		tickerSymbol: ticker
+	// 	})
+	// 	.update()
+	// }
 	// update(id, tower) {
 	// 	return database('tower')
 	// 		.where('id', id)
